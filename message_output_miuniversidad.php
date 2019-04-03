@@ -113,6 +113,6 @@ class message_output_miuniversidad extends message_output
     }
     
     protected function send($eventdata, $user = null, $context = null) {
-        return MiUniversidad::send_raw_news($eventdata->subject, $this->get_content($eventdata), false, $user, $this->is_notifiable($eventdata));
+        return MiUniversidad::send_raw_news($eventdata->subject, $this->get_content($eventdata), false, $user, $this->is_notifiable($eventdata), $context);
     }
 }
