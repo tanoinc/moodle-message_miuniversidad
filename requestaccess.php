@@ -10,14 +10,13 @@ function miuniversidad_js_status($app, $status) {
     return html_writer::script('if (typeof(Storage) !== "undefined") { localStorage.setItem("'.$app.'_status", "'.$status.'"); }');
 }
 
-$PAGE->set_url(new moodle_url('/message/output/miuniversidad/requestaccess.php'));
+$id = required_param('id', PARAM_ALPHANUM); //Mi Universidad user hash id
+$token = required_param('token', PARAM_ALPHANUM);  // Mi Universidad token
+
+$PAGE->set_url(new moodle_url('/message/output/miuniversidad/requestaccess.php', array('id' => $id, 'token' => $token) ));
 $PAGE->set_context(context_system::instance());
 
 require_login();
-
-
-$id = required_param('id', PARAM_ALPHANUM); //Mi Universidad user hash id
-$token = required_param('token', PARAM_ALPHANUM);  // Mi Universidad token
 
 $strheading = get_string('requestaccess', 'message_miuniversidad');
 $PAGE->navbar->add(get_string('pluginname', 'message_miuniversidad'));
